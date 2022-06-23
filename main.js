@@ -6,17 +6,20 @@ let ctx=canvas.getContext("2d");
 // Variable rectLeft
 let xl=20;
 let yl=20;
-let lL=35;
-let hl=250;
+let lL=30;
+let hl=210;
 
 // Variable rectRight
 let xr=50;
 let yr=20;
-let lR=35; 
-let hr=250;
+let lR=30; 
+let hr=210;
 
 //Variable du pong
-
+let xp=2;
+let yp=2;
+let lp=120;
+let hp=185;
 
 
 //Platforme de gauche
@@ -50,13 +53,41 @@ function draw(){
     // Fonction qui dessine la scène
     ctx.clearRect(0,0,canvas.width,canvas.height);
 
+    //Traitillés du millieu
+    ctx.fillStyle="white";
+	ctx.fillRect(595,20,10,70);
+    
+    ctx.fillStyle="white";
+	ctx.fillRect(595,120,10,70);
+    
+    ctx.fillStyle="white";
+	ctx.fillRect(595,220,10,70);
+    
+    ctx.fillStyle="white";
+	ctx.fillRect(595,320,10,70);
+    
+    ctx.fillStyle="white";
+	ctx.fillRect(595,420,10,70);
+    
+    ctx.fillStyle="white";
+	ctx.fillRect(595,520,10,70);
+    
+    ctx.fillStyle="white";
+	ctx.fillRect(595,620,10,70);
+    
+    
+
     // Rectangle de gauche
 	ctx.fillStyle="white";
-    ctx.drawImage(rectLeft,xl*1.25,yl*11.5,lL,hl);
+    ctx.drawImage(rectLeft,xl*1.25,yl*12.5,lL,hl);
     
     // Rectangle de droite
 	ctx.fillStyle="white";
-    ctx.drawImage(rectRight,xr*22.8,yr*11.5,lR,hr);
+    ctx.drawImage(rectRight,xr*22.9,yr*12.5,lR,hr);
+
+    //Le pong donc la balle
+    ctx.fill="white";
+    ctx.drawImage(pong,xp,yp,lp,hp)
 
 
 }
