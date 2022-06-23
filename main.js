@@ -52,11 +52,11 @@ function draw(){
 
     // Rectangle de gauche
 	ctx.fillStyle="white";
-    ctx.drawImage(rectLeft,xl*57,yl,lL,hl);
+    ctx.drawImage(rectLeft,xl*1.25,yl*11.5,lL,hl);
     
     // Rectangle de droite
 	ctx.fillStyle="white";
-    ctx.drawImage(rectRight,xr/2,yr/1.1,lR,hr);
+    ctx.drawImage(rectRight,xr*22.8,yr*11.5,lR,hr);
 
 
 }
