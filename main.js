@@ -72,25 +72,25 @@ function keyMoove(e){
 
     //touche w
     if (touche==87){
-        yl=Math.max(yl-50);
-        if(yl<-6) yl=-6;
+        yl=Math.max(yl-5);
+        if(yl<0) yl=0;
     }
     //touche s
     if (touche==83){
-        yl=Math.max(yl+50);
-        if (yl>508) yl=508;
+        yl=Math.max(yl+5);
+        if (yl>40) yl=40;
     }
 
     //touche flèche du haut
     if (touche==38){
-        yr=Math.max(yr-50);
-        if(yr<-6) yr=-6;
+        yr=Math.max(yr-5);
+        if(yr<0) yr=0;
     }
 
     //touche flèche du bas
     if (touche==40){
-        yr=Math.max(yr+50);
-        if (yr>508) yr=508;
+        yr=Math.max(yr+5);
+        if (yr>40) yr=40;
     }
 
 }
