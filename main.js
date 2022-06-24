@@ -93,12 +93,12 @@ function pongCollisionWalls(){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     draw();
     
-    //Coté du mur
+    //Rebondir coté du mur
     if(xP + vxP > canvas.height-pRadius || xP + vxP < pRadius) {
       vxP = -vxP;
-  }
-    
-    //Pour le haut du mur
+   }
+
+    //Rebondir haut du mur
     if(yP + vyP > canvas.height-pRadius || yP + vyP < pRadius) {
         vyP = -vyP;
     }
@@ -107,6 +107,10 @@ function pongCollisionWalls(){
     yP += vyP;
 }
 setInterval(pongCollisionWalls, 12);
+
+
+//Collisions avec balle et rectangles
+
 
 
 //Définir les déplacement avec les touches du clavier 
