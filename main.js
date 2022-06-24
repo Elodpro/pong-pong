@@ -16,10 +16,11 @@ let lR=30;
 let hr=210;
 
 //Variable du pong
-let xp=2;
-let yp=2;
-let lp=120;
-let hp=185;
+let pRadius= 19;
+let xP = 346;
+let yP = 352;
+let vxP = 3;
+let vyP = -3;
 
 
 //Platforme de gauche
@@ -29,11 +30,6 @@ rectLeft.src="/Images/rect-white.png";
 //Platforme de droite
 let rectRight=new Image();
 rectRight.src="/Images/rect-white.png";
-
-//Balle pong-pong
-let pong=new Image();
-pong.src="/Images/pong.png";
-
 
 
 
@@ -76,6 +72,12 @@ function draw(){
 	ctx.fillRect(595,620,10,70);
     
     
+    //dessin du pong
+    ctx.beginPath();
+    ctx.arc(xP*1.72, yP, pRadius, 0, Math.PI*2);
+    ctx.fillStyle="white";
+    ctx.fill();
+    ctx.closePath();
 
     // Rectangle de gauche
 	ctx.fillStyle="white";
@@ -85,12 +87,26 @@ function draw(){
 	ctx.fillStyle="white";
     ctx.drawImage(rectRight,xr*22.9,yr*12.5,lR,hr);
 
-    //Le pong donc la balle
-    ctx.fill="white";
-    ctx.drawImage(pong,xp,yp,lp,hp)
-
-
 }
+
+function pongCollisionWalls(){
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    draw();
+    
+    //Coté du mur
+    if(xP + vxP > canvas.height-pRadius || xP + vxP < pRadius) {
+      vxP = -vxP;
+  }
+    
+    //Pour le haut du mur
+    if(yP + vyP > canvas.height-pRadius || yP + vyP < pRadius) {
+        vyP = -vyP;
+    }
+    
+    xP += vxP;
+    yP += vyP;
+}
+setInterval(pongCollisionWalls, 12);
 
 
 //Définir les déplacement avec les touches du clavier 
@@ -125,3 +141,4 @@ function keyMoove(e){
     }
 
 }
+
