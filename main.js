@@ -22,7 +22,9 @@ let yP = 352;
 let vxP = 3;
 let vyP = -3;
 
-
+//Variable score
+let lScore=0;
+let rScore=0;
 //Platforme de gauche
 let rectLeft=new Image();
 rectLeft.src="/Images/rect-white.png";
@@ -48,6 +50,17 @@ function timerVariable(){
 function draw(){
     // Fonction qui dessine la scène
     ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    //Score des 2 joueurs 
+    //Rectleft
+    ctx.fillStyle="white";
+	ctx.font="30pt Arial";
+	ctx.fillText(lScore,478,50);
+    //Rectright
+    ctx.fillStyle="white";
+	ctx.font="30pt Arial";
+	ctx.fillText(rScore,700,50);
+
 
     //Traitillés du millieu
     ctx.fillStyle="white";
@@ -89,13 +102,27 @@ function draw(){
 
 }
 
+//Marche pas du tout
+function pongCollisionRect(){
+    if(xP + pRadius < xl + yl + lL + hl-pRadius){
+        vxP = -vxP;
+
+    }
+}
+
 function pongCollisionWalls(){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     draw();
     
     //Rebondir coté du mur
-    if(xP + vxP > canvas.height-pRadius || xP + vxP < pRadius) {
+    if(xP + vxP > canvas.height-pRadius) {
       vxP = -vxP;
+      lScore++; 
+   }
+
+   if(xP +vxP < pRadius){
+    vxP = -vxP;
+    rScore++;
    }
 
     //Rebondir haut du mur
